@@ -10,15 +10,21 @@ import SwiftUI
 @main
 struct FructusApp: App {
     @AppStorage("isOnboarding") var isOnboarding: Bool = true
+    @AppStorage("isShowingSettings") var isShowingSettings: Bool = false
     
     var body: some Scene {
         WindowGroup {
-            if isOnboarding {
-                OnboardingView(fruits: fruitsData)
-            } else {
-                ContentView()
+            ZStack {
+                if isOnboarding {
+                    OnboardingView(fruits: fruitsData)
+                } else {
+                    ContentView()
+                }
             }
-            
+            .sheet(isPresented: $isShowingSettings) {
+                SettingsView()
+            }
         }
+        
     }
 }

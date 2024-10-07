@@ -42,6 +42,8 @@ struct FruitCardView: View {
                     
                 // BUTTON: START
                 StartButtonView()
+                
+                Spacer(minLength: 20)
             } //: VSTACK
         } //: ZSTACK
         .onAppear {
